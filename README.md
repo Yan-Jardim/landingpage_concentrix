@@ -1,17 +1,27 @@
-# Landing Page - Teste Técnico Front-end
+# Landing Page - Plataforma de Gestão de Débitos
 
-## 📋 Descrição
+## 📋 Sobre o Projeto
 
-Este projeto é a implementação de um teste técnico de front-end, desenvolvido com base em um layout do Figma. A landing page apresenta uma interface moderna e responsiva para uma plataforma de gestão de débitos e pagamentos, incluindo formulário de login, seções de benefícios, canais de atendimento, passo a passo, FAQ interativo e footer completo.
+Landing page moderna e responsiva desenvolvida para uma plataforma de gestão de débitos e pagamentos. O projeto foi construído seguindo as melhores práticas de desenvolvimento front-end, com foco em performance, acessibilidade e experiência do usuário.
 
 ## 🚀 Tecnologias Utilizadas
 
-- **React 18** - Biblioteca JavaScript para construção de interfaces
-- **TypeScript** - Superset do JavaScript com tipagem estática
-- **Vite** - Build tool moderna e rápida para desenvolvimento
-- **styled-components** - CSS-in-JS para estilização componentizada
-- **Zod** - Biblioteca de validação de schemas TypeScript-first
-- **react-hook-form** - Gerenciamento de formulários performático
+### Core
+- *React 18* - Biblioteca JavaScript para construção de interfaces
+- *TypeScript* - Superset do JavaScript com tipagem estática
+- *Vite* - Build tool moderna e rápida para desenvolvimento
+
+### Estilização
+- *styled-components* - CSS-in-JS para estilização componentizada
+- *Design System Tokens* - Sistema de design com tokens centralizados (cores, tipografia, espaçamentos)
+
+### Formulários e Validação
+- *Zod* - Biblioteca de validação de schemas TypeScript-first
+- *react-hook-form* - Gerenciamento de formulários performático
+- *@hookform/resolvers* - Integração entre Zod e react-hook-form
+
+### UI/UX
+- *Swiper.js* - Biblioteca para carrosséis responsivos e touch-friendly
 
 ## 📦 Instalação e Execução
 
@@ -22,129 +32,276 @@ Este projeto é a implementação de um teste técnico de front-end, desenvolvid
 
 ### Instalação das dependências
 
-```bash
+bash
 npm install
-```
+
 
 ### Executar em modo de desenvolvimento
 
-```bash
+bash
 npm run dev
-```
 
-O projeto estará disponível em `http://localhost:5173` (ou outra porta disponível).
+
+O projeto estará disponível em http://localhost:5173 (ou outra porta disponível).
 
 ### Build para produção
 
-```bash
+bash
 npm run build
-```
+
 
 ### Preview do build de produção
 
-```bash
+bash
 npm run preview
-```
+
+
+### Linting
+
+bash
+npm run lint
+
 
 ## 🎨 Funcionalidades Implementadas
 
-### Mobile-First Design
+### 📱 Design Responsivo (Mobile-First)
 
-A aplicação foi desenvolvida seguindo a abordagem mobile-first, garantindo uma experiência otimizada em dispositivos móveis e adaptação progressiva para tablets e desktops. Todas as seções utilizam media queries consistentes baseadas nos breakpoints definidos no tema:
+A aplicação foi desenvolvida seguindo a abordagem *mobile-first*, garantindo uma experiência otimizada em todos os dispositivos:
 
-- **Mobile**: 0-767px
-- **Tablet**: 768-1023px
-- **Desktop**: 1024px+
+- *Mobile* (0-767px): Layout otimizado com carrosséis touch-friendly
+- *Tablet* (768-1023px): Transição gradual para layout desktop
+- *Desktop* (1024px+): Layout completo com grid e espaçamentos amplos
 
-### Componentização
+### 🎯 Componentização Modular
 
-O projeto foi estruturado com foco em reutilização e manutenibilidade:
+Estrutura organizada em componentes reutilizáveis e modulares:
 
-- **Componentes genéricos**: `BenefitCard`, `ChannelCard`, `StepCard`, `FaqItem`
-- **Seções modulares**: Cada seção da landing page é um componente independente
-- **Container reutilizável**: `PageContainer` para controle consistente de largura e padding
-- **Tema centralizado**: Sistema de design tokens para cores, tipografia, espaçamentos e breakpoints
 
-### Validação do Formulário de Login
+src/components/
+├── BenefitCard/          # Card de benefício individual
+├── BenefitsSection/      # Seção de benefícios com carrossel/grid
+├── ChannelCard/         # Card de canal de atendimento
+├── ChannelsSection/      # Seção de canais
+├── FaqItem/             # Item individual do FAQ
+├── FaqSection/           # Seção de perguntas frequentes
+├── Footer/               # Rodapé completo
+├── Header/               # Cabeçalho
+├── HeroSection/          # Seção hero com formulário
+├── LoginForm/            # Formulário de login
+├── PageContainer/        # Container para controle de largura
+├── ScrollIndicator/      # Indicador de scroll
+├── StepCard/             # Card de passo individual
+└── StepsSection/         # Seção de passos com carrossel
 
-O formulário de login implementa validação robusta utilizando:
 
-- **Zod** para definição de schemas de validação
-- **react-hook-form** para gerenciamento de estado e performance
-- Validação de CPF/CNPJ (mínimo 11 caracteres)
-- Validação de data de nascimento (campo obrigatório)
-- Toggle entre Pessoa Física e Pessoa Jurídica
-- Mensagens de erro contextuais
-- Feedback visual de sucesso
+### ✅ Validação Robusta de Formulário
 
-### FAQ Interativo
+O formulário de login implementa validação completa e em tempo real:
+
+#### Validação de CPF
+- Máscara automática: 000.000.000-00
+- Validação de dígitos verificadores (algoritmo oficial)
+- Validação de CPFs inválidos conhecidos (111.111.111-11, etc.)
+
+#### Validação de CNPJ
+- Máscara automática: 00.000.000/0000-00
+- Validação de dígitos verificadores (algoritmo oficial)
+- Validação de CNPJs inválidos conhecidos
+
+#### Validação de Data
+- Máscara automática: DD/MM/AAAA
+- Validação de data válida (dias, meses, anos)
+- Validação de idade mínima (se necessário)
+
+#### Funcionalidades
+- Toggle entre *Pessoa Física* e *Pessoa Jurídica*
+- Máscaras dinâmicas que se adaptam ao tipo de perfil
+- Mensagens de erro contextuais e específicas
+- Validação em tempo real durante a digitação
+- Feedback visual de sucesso/erro
+
+### 🎠 Carrosséis Responsivos
+
+#### BenefitsSection
+- *Mobile*: Carrossel horizontal com scroll touch
+- *Desktop*: Grid de 2 colunas com layout otimizado
+- Transição suave entre breakpoints
+
+#### StepsSection
+- *Mobile*: Carrossel horizontal com cards completos
+- *Desktop*: Grid de 4 colunas com espaçamento uniforme
+- Scroll desabilitado no desktop (apenas visualização)
+
+### 📋 FAQ Interativo
 
 Seção de perguntas frequentes com acordeão:
 
-- Primeira pergunta aberta por padrão
-- Controle individual de estado para cada item
-- Animações suaves de abertura/fechamento
-- Ícones dinâmicos (+ quando fechado, − quando aberto)
-- Múltiplas perguntas podem estar abertas simultaneamente
+- ✅ Primeira pergunta aberta por padrão
+- ✅ Controle individual de estado para cada item
+- ✅ Animações suaves de abertura/fechamento
+- ✅ Ícones dinâmicos (+ quando fechado, − quando aberto)
+- ✅ Múltiplas perguntas podem estar abertas simultaneamente
+- ✅ Atributos ARIA para acessibilidade
 
-### Estrutura de Seções
+### 🎨 Sistema de Design
 
-1. **Hero Section**: Título, subtítulo e formulário de login
-2. **Benefits Section**: Cards de benefícios (Negociação, Segunda via, Pagamento)
-3. **Channels Section**: Canais de atendimento (Ligação e WhatsApp)
-4. **Steps Section**: Passo a passo do processo (4 etapas)
-5. **FAQ Section**: Perguntas frequentes com acordeão
-6. **Footer**: Links, contatos e informações legais
+Tema centralizado com tokens do Design System:
+
+- *Cores*: Paleta completa com variantes (primary, secondary, neutral, etc.)
+- *Tipografia*: Hierarquia de fontes (h1-h7, body, overline, badge, display)
+- *Espaçamentos*: Sistema de spacing consistente (xsmall, small, medium, large, xlarge, xxlarge, huge)
+- *Breakpoints*: sm (393px), md (835px), lg (1366px)
+- *Sombras*: Sistema de elevação
+- *Border Radius*: Valores padronizados (none, small, medium, large, xlarge, pill, circle)
 
 ## 📁 Estrutura do Projeto
 
-```
-src/
-├── components/          # Componentes reutilizáveis
-│   ├── BenefitCard.tsx
-│   ├── ChannelCard.tsx
-│   ├── FaqItem.tsx
-│   ├── LoginForm.tsx
-│   ├── PageContainer.tsx
-│   ├── StepCard.tsx
-│   └── [Sections].tsx   # Seções da landing page
-├── styles/              # Estilos globais e tema
-│   ├── global.ts
-│   └── theme.ts
-├── validation/          # Schemas de validação
-│   └── loginSchema.ts
-├── App.tsx
-├── main.tsx
-└── styled.d.ts         # Tipagem do styled-components
-```
 
-## 🎯 Melhorias Futuras
+landingpage/
+├── src/
+│   ├── assets/                    # Recursos estáticos
+│   │   ├── images/                # Imagens principais
+│   │   └── Icon_footer/           # Ícones do footer
+│   ├── components/                # Componentes React
+│   │   ├── [ComponentName]/       # Estrutura por componente
+│   │   │   ├── index.tsx          # Componente principal
+│   │   │   └── styles.ts          # Estilos styled-components
+│   ├── styles/                     # Estilos globais
+│   │   ├── global.ts              # Reset CSS e estilos globais
+│   │   └── theme.ts               # Tema e tokens do design system
+│   ├── utils/                      # Utilitários
+│   │   └── masks.ts               # Funções de máscara e validação
+│   ├── validation/                 # Schemas de validação
+│   │   └── loginSchema.ts         # Schema Zod para login
+│   ├── App.tsx                     # Componente raiz
+│   ├── main.tsx                    # Entry point
+│   └── styled.d.ts                 # Tipagem do styled-components
+├── public/                          # Arquivos públicos
+├── package.json                     # Dependências e scripts
+├── tsconfig.json                    # Configuração TypeScript
+├── vite.config.ts                   # Configuração Vite
+└── README.md                        # Documentação
 
-Algumas sugestões para evolução do projeto:
 
-- [ ] Implementar máscaras de input para CPF/CNPJ e data de nascimento
-- [ ] Adicionar validação real de CPF/CNPJ (algoritmo de validação)
+## 🎯 Seções da Landing Page
+
+### 1. Header
+Cabeçalho com logo e navegação
+
+### 2. Hero Section
+- Título e subtítulo principais
+- Formulário de login integrado
+- Indicador de scroll
+
+### 3. Benefits Section
+Cards de benefícios:
+- 💬 *Negociação*: Negocie seus débitos de forma rápida
+- 📄 *Segunda via*: Solicite segunda via de documentos
+- 💳 *Pagamento*: Realize pagamentos de forma segura
+
+### 4. Channels Section
+Canais de atendimento:
+- 📞 *Ligação*: Atendimento telefônico
+- 💬 *WhatsApp*: Atendimento via mensagem
+
+### 5. Steps Section
+Passo a passo do processo (4 etapas):
+1. Contrato
+2. Negociação
+3. Pronto
+4. Segunda via
+
+### 6. FAQ Section
+Perguntas frequentes com acordeão interativo
+
+### 7. Footer
+- Links úteis
+- Canais de contato
+- Informações de segurança (SSL)
+- Informações legais e copyright
+
+## 🔧 Utilitários e Helpers
+
+### Máscaras de Input (src/utils/masks.ts)
+
+typescript
+// CPF: 000.000.000-00
+maskCPF(value: string): string
+
+// CNPJ: 00.000.000/0000-00
+maskCNPJ(value: string): string
+
+// Data: DD/MM/AAAA
+maskDate(value: string): string
+
+// Validação real de CPF
+isValidCPF(cpf: string): boolean
+
+// Validação real de CNPJ
+isValidCNPJ(cnpj: string): boolean
+
+// Validação real de data
+isValidDate(date: string): boolean
+
+
+## 📝 Convenções de Código
+
+### TypeScript
+- ✅ TypeScript strict mode habilitado
+- ✅ Tipagem completa em todos os componentes
+- ✅ Evitar uso de any (preferir unknown ou tipagem específica)
+- ✅ Usar utilitários do TS (Partial<T>, Pick<T>, Omit<T>)
+
+### Nomenclatura
+- ✅ Componentes em *PascalCase*: BenefitCard, LoginForm
+- ✅ Arquivos de estilo: styles.ts
+- ✅ Funções e variáveis em *camelCase*: handleSubmit, isValid
+- ✅ Constantes em *UPPER_SNAKE_CASE*: MAX_LENGTH
+
+### Estilização
+- ✅ Usar tokens do design system (theme.colors, theme.spacing)
+- ✅ styled-components com acesso ao theme
+- ✅ Mobile-first: estilos base para mobile, depois breakpoints maiores
+
+### Componentes
+- ✅ Um componente por arquivo
+- ✅ Separar lógica de negócio em hooks quando necessário
+- ✅ Props booleanas sem ={true}: isActive em vez de isActive={true}
+
+## 🚀 Melhorias Implementadas
+
+- ✅ Máscaras de input em tempo real para CPF, CNPJ e data
+- ✅ Validação real de CPF/CNPJ com algoritmos oficiais
+- ✅ Validação de datas com verificação de dias/meses/anos
+- ✅ Carrosséis responsivos com Swiper.js
+- ✅ Acessibilidade (ARIA attributes)
+- ✅ Design system com tokens centralizados
+- ✅ Componentização modular e reutilizável
+- ✅ TypeScript strict mode
+- ✅ Validação de formulários com Zod e react-hook-form
+
+## 🔮 Melhorias Futuras
+
 - [ ] Integração com API para autenticação real
-- [ ] Adicionar testes unitários (Jest + React Testing Library)
-- [ ] Implementar lazy loading para imagens
-- [ ] Adicionar animações mais elaboradas (Framer Motion)
-- [ ] Melhorar acessibilidade (ARIA labels, navegação por teclado)
+- [ ] Testes unitários (Jest + React Testing Library)
+- [ ] Testes E2E (Playwright ou Cypress)
+- [ ] Lazy loading para imagens
+- [ ] Animações mais elaboradas (Framer Motion)
+- [ ] Melhorar acessibilidade (navegação por teclado, screen readers)
 - [ ] Implementar dark mode
 - [ ] Adicionar internacionalização (i18n)
 - [ ] Otimização de performance (code splitting, memoização)
+- [ ] Storybook para documentação de componentes
+- [ ] CI/CD pipeline
 
-## 📝 Observações
+## 📄 Licença
 
-- O projeto utiliza TypeScript strict mode para garantir type safety
-- Todos os componentes seguem as convenções de nomenclatura em inglês
-- O código foi desenvolvido seguindo boas práticas de React e TypeScript
-- A validação do formulário é simplificada (não valida CPF/CNPJ real, apenas comprimento mínimo)
-- Os ícones atuais são placeholders (emojis) e podem ser substituídos por bibliotecas de ícones
+Este projeto foi desenvolvido como parte de um teste técnico.
 
 ## 👨‍💻 Desenvolvido por
 
-Teste técnico de front-end - Landing Page
+*Yan Jardim*
 
 ---
 
-**Nota**: Este projeto foi desenvolvido como parte de um teste técnico e não está em produção.
+*Nota*: Este projeto foi desenvolvido seguindo as melhores práticas de desenvolvimento front-end moderno, com foco em código limpo, manutenível e escalável.
