@@ -132,6 +132,31 @@ O formulário de login implementa validação completa e em tempo real:
 - *Desktop*: Grid de 4 colunas com espaçamento uniforme
 - Scroll desabilitado no desktop (apenas visualização)
 
+### 📜 Scroll Suave entre Seções
+
+O projeto implementa navegação por scroll suave através do componente ScrollIndicator:
+
+#### Funcionalidades
+- ✅ *Scroll suave* (smooth) para a próxima seção
+- ✅ *Offset automático* para compensar o header fixo (80px)
+- ✅ *Navegação por ID*: Permite especificar a seção de destino via targetSectionId
+- ✅ *Fallback inteligente*: Se não houver targetSectionId, encontra automaticamente a próxima seção
+- ✅ *Callback customizado*: Suporta onClick personalizado quando necessário
+
+#### Como funciona
+1. Cada seção principal possui um id único (ex: hero-section, benefits-section, faq-section)
+2. O ScrollIndicator calcula a posição da seção alvo considerando o offset do header
+3. Utiliza window.scrollTo() com behavior: 'smooth' para animação suave
+4. Implementado no HeroSection e StepsSection para navegação fluida
+
+#### Exemplo de uso
+tsx
+<ScrollIndicator 
+  size={40} 
+  targetSectionId="benefits-section" 
+/>
+
+
 ### 📋 FAQ Interativo
 
 Seção de perguntas frequentes com acordeão:
@@ -162,7 +187,28 @@ O projeto segue uma arquitetura modular baseada em componentes, onde cada compon
 
 - *index.tsx*: Componente principal com a lógica de renderização
 - *styles.ts*: Estilos específicos do componente usando styled-components
-- *types.ts*: Definições de tipos TypeScript (quando aplicável)
+- *types.ts*: Definições de tipos TypeScript separadas em arquivo dedicado (quando aplicável)
+
+#### Separação de Tipagens
+
+*Todas as tipagens TypeScript estão organizadas em arquivos types.ts dedicados*, garantindo:
+- ✅ *Organização clara*: Tipos separados da lógica do componente
+- ✅ *Reutilização*: Tipos podem ser importados em outros componentes quando necessário
+- ✅ *Manutenibilidade*: Facilita refatoração e evolução dos tipos
+- ✅ *Consistência*: Padrão uniforme em todos os componentes
+
+*Componentes com arquivos types.ts:*
+- Button/types.ts - ButtonProps, ButtonVariant, ButtonSize
+- Input/types.ts - InputProps
+- LoginForm/types.ts - ProfileType
+- ScrollIndicator/types.ts - ScrollIndicatorProps
+- BenefitCard/types.ts - Tipos do BenefitCard
+- BenefitsSection/types.ts - Benefit
+- ChannelCard/types.ts - ChannelCardProps
+- StepCard/types.ts - StepCardProps
+- StepsSection/types.ts - Step
+- FaqItem/types.ts - FaqItemProps
+- FaqSection/types.ts - Faq
 
 ### Estrutura de Diretórios
 
@@ -218,9 +264,14 @@ landingpage/
 
 1. *Separação de Responsabilidades*: Cada componente tem uma responsabilidade única e bem definida
 2. *Reutilização*: Componentes genéricos (Card, Button, Input) são reutilizáveis em diferentes contextos
-3. *Tipagem Forte*: TypeScript com tipos separados em arquivos types.ts para melhor organização
+3. *Tipagem Forte e Organizada*: 
+   - TypeScript strict mode habilitado
+   - *Todos os tipos estão separados em arquivos types.ts dedicados* dentro de cada componente
+   - Evita uso de any, preferindo tipagem específica ou unknown
+   - Facilita manutenção e refatoração
 4. *Estilização Isolada*: Cada componente gerencia seus próprios estilos via styled-components
 5. *Design System Centralizado*: Tokens de design (cores, espaçamentos, tipografia) centralizados em theme.ts
+6. *Navegação por Scroll*: Sistema de scroll suave entre seções com offset automático para header fixo
 
 ## 🎯 Seções da Landing Page
 
@@ -230,7 +281,7 @@ Cabeçalho com logo e navegação
 ### 2. Hero Section
 - Título e subtítulo principais
 - Formulário de login integrado
-- Indicador de scroll
+- *ScrollIndicator*: Indicador de scroll que navega suavemente para a próxima seção (benefits-section)
 
 ### 3. Benefits Section
 Cards de benefícios:
@@ -249,6 +300,7 @@ Passo a passo do processo (4 etapas):
 2. Negociação
 3. Pronto
 4. Segunda via
+- *ScrollIndicator*: Navega suavemente para a seção FAQ (faq-section)
 
 ### 6. FAQ Section
 Perguntas frequentes com acordeão interativo
@@ -288,8 +340,10 @@ isValidDate(date: string): boolean
 ### TypeScript
 - ✅ TypeScript strict mode habilitado
 - ✅ Tipagem completa em todos os componentes
+- ✅ *Tipagens separadas em arquivos types.ts dedicados* para cada componente
 - ✅ Evitar uso de any (preferir unknown ou tipagem específica)
 - ✅ Usar utilitários do TS (Partial<T>, Pick<T>, Omit<T>)
+- ✅ Tipos exportados e reutilizáveis quando necessário
 
 ### Nomenclatura
 - ✅ Componentes em *PascalCase*: BenefitCard, LoginForm
@@ -313,11 +367,13 @@ isValidDate(date: string): boolean
 - ✅ Validação real de CPF/CNPJ com algoritmos oficiais
 - ✅ Validação de datas com verificação de dias/meses/anos
 - ✅ Carrosséis responsivos com Swiper.js
+- ✅ *Scroll suave entre seções* com offset automático para header fixo
 - ✅ Acessibilidade (ARIA attributes)
 - ✅ Design system com tokens centralizados
 - ✅ Componentização modular e reutilizável
+- ✅ *Separação de tipagens em arquivos types.ts dedicados*
 - ✅ TypeScript strict mode
-- ✅ Validação de formulários com Zod e react-hook-form
+- ✅ Validação de formulários com Zod e react-hook-form usando Controller
 
 ## 🔮 Melhorias Futuras
 
