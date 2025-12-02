@@ -6,14 +6,7 @@ import {
   CardTitle,
   CardDescription,
 } from './styles'
-
-type BenefitCardProps = {
-  title: string
-  description: string
-  variant?: 'default' | 'highlight'
-  icon?: React.ReactNode
-  image?: string
-}
+import {BenefitCardProps} from './types'
 
 const BenefitCard: React.FC<BenefitCardProps> = ({
   title,

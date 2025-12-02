@@ -14,8 +14,7 @@ import {
   LastFormGroup,
   SuccessMessage,
 } from './styles'
-
-type ProfileType = 'PF' | 'PJ'
+import { ProfileType } from './types'
 
 const LoginForm: React.FC = () => {
   const [profileType, setProfileType] = useState<ProfileType>('PF')

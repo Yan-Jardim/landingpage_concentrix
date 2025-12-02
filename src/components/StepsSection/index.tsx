@@ -15,13 +15,7 @@ import {
   SwiperContainer,
   ScrollWrapper,
 } from './styles'
-
-type Step = {
-  stepNumber: number
-  title: string
-  description: string
-  image: string
-}
+import { Step } from './types'
 
 const steps: Step[] = [
   {

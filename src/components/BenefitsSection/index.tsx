@@ -18,13 +18,7 @@ import {
   SwiperContainer,
   ScrollWrapper,
 } from './styles'
-
-type Benefit = {
-  title: string
-  description: string
-  variant?: 'default' | 'highlight'
-  image: string
-}
+import { Benefit } from './types'
 
 const benefits: Benefit[] = [
   {

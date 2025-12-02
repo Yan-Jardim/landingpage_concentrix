@@ -1,12 +1,6 @@
 import React from 'react'
 import { CardContainer, IconWrapper, IconImage, Tag, CardTitle } from './styles'
-
-type ChannelCardProps = {
-  title: string
-  tag?: string
-  iconImage?: string
-  backgroundImage?: string
-}
+import { ChannelCardProps } from './types'
 
 const ChannelCard: React.FC<ChannelCardProps> = ({
   title,

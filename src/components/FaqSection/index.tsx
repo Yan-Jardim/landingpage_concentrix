@@ -8,11 +8,7 @@ import {
   SectionSubtitle,
   FaqList,
 } from './styles'
-
-type Faq = {
-  question: string
-  answer: string
-}
+import { Faq } from './types'
 
 const faqs: Faq[] = [
   {

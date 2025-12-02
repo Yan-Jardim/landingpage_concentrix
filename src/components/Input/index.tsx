@@ -1,10 +1,6 @@
 import React from 'react'
 import { InputContainer, InputLabel, InputField, ErrorMessage } from './styles'
-
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  label?: string
-  error?: string
-}
+import { InputProps } from './types'
 
 const Input: React.FC<InputProps> = ({
   label,

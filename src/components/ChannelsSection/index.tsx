@@ -42,7 +42,7 @@ const ChannelsSection: React.FC = () => {
         </CardsContainer>
 
         <ScrollWrapper>
-          <ScrollIndicator size={40} />
+         <ScrollIndicator size={40} targetSectionId="steps-section" />
         </ScrollWrapper>
       </PageContainer>
     </ChannelsSectionContainer>

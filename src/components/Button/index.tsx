@@ -1,15 +1,6 @@
 import React from 'react'
-import { ButtonBase, ButtonVariant, ButtonSize } from './styles'
-
-type ButtonProps = {
-  variant?: ButtonVariant
-  size?: ButtonSize
-  children: React.ReactNode
-  disabled?: boolean
-  onClick?: () => void
-  type?: 'button' | 'submit' | 'reset'
-  fullWidth?: boolean
-}
+import { ButtonBase } from './styles'
+import { ButtonProps } from './types'
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
@@ -35,4 +26,3 @@ const Button: React.FC<ButtonProps> = ({
 }
 
 export default Button
-

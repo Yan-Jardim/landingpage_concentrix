@@ -11,12 +11,7 @@ import {
 } from './styles'
 import openIcon from '../../assets/Open.png'
 import closeIcon from '../../assets/Close.png'
-
-type FaqItemProps = {
-  question: string
-  answer: string
-  defaultOpen?: boolean
-}
+import { FaqItemProps } from './types'
 
 const FaqItem: React.FC<FaqItemProps> = ({
   question,

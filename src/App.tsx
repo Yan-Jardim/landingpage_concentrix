@@ -15,12 +15,22 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Header />
-      <HeroSection />
-      <BenefitsSection />
-      <ChannelsSection />
-      <StepsSection /> 
-      <FaqSection />
-      <Footer /> 
+      <section id="hero-section">
+        <HeroSection />
+      </section>
+      <section id="benefits-section">
+        <BenefitsSection />
+      </section>
+      <section id="channels-section">
+        <ChannelsSection />
+      </section>
+      <section id="steps-section">
+        <StepsSection />
+      </section>
+      <section id="faq-section">
+        <FaqSection />
+      </section>
+      <Footer />
     </ThemeProvider>
   );
 };

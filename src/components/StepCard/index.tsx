@@ -6,13 +6,7 @@ import {
   CardDescription,
   StepImage,
 } from './styles'
-
-type StepCardProps = {
-  stepNumber: number
-  title: string
-  description: string
-  image?: string
-}
+import { StepCardProps } from './types'
 
 const StepCard: React.FC<StepCardProps> = ({
   stepNumber,
