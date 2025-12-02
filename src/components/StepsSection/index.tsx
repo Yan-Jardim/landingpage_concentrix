@@ -55,12 +55,11 @@ const StepsSection: React.FC = () => {
 
         <SwiperContainer>
           <Swiper
-            modules={[]}
             spaceBetween={16}
             slidesPerView="auto"
-            allowTouchMove={true}
+            allowTouchMove
             centeredSlides={false}
-            grabCursor={true}
+            grabCursor
             breakpoints={{
               480: {
                 slidesPerView: 1.5,

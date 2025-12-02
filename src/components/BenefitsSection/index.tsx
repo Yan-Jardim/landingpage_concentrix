@@ -54,15 +54,14 @@ const BenefitsSection: React.FC = () => {
 
         <SwiperContainer>
           <Swiper
-            modules={[]}
             spaceBetween={12}
             slidesPerView={1.15}
-            allowTouchMove={true}
+            allowTouchMove
             centeredSlides={false}
-            grabCursor={true}
-            resistance={true}
+            grabCursor
+            resistance
             resistanceRatio={0.85}
-            watchOverflow={true}
+            watchOverflow
             breakpoints={{
               768: {
                 slidesPerView: 'auto',
@@ -72,7 +71,7 @@ const BenefitsSection: React.FC = () => {
             }}
           >
             {benefits.map((benefit, index) => (
-              <SwiperSlide key={`benefit-${index}-${benefit.title}`}>
+              <SwiperSlide key={`benefit - ${index}- ${benefit.title}`}>
                 <BenefitCard
                   title={benefit.title}
                   description={benefit.description}
@@ -86,35 +85,40 @@ const BenefitsSection: React.FC = () => {
 
         <CardsGrid>
           <LeftColumn>
-            <BenefitCard
-              title="Negociação"
-              description="Negociação rápida e segura."
-              image={negociacaoImage}
-            />
-            <BenefitCard
-              title="Segunda via"
-              description="Consulta de débitos em atraso."
-              image={segundaViaImage}
-            />
+            {benefits
+              .filter((benefit) => benefit.variant !== 'highlight')
+              .map((benefit, index) => (
+                <BenefitCard
+                  key={`grid-benefit-${index}-${benefit.title}`}
+                  title={benefit.title}
+                  description={benefit.description}
+                  variant={benefit.variant}
+                  image={benefit.image}
+                />
+              ))}
           </LeftColumn>
 
           <RightColumn>
-            <BenefitCard
-              title="Pagamento"
-              description="Seu pagamento, como preferir."
-              variant="highlight"
-              image={pagamentoImage}
-            />
+            {benefits
+              .filter((benefit) => benefit.variant === 'highlight')
+              .map((benefit, index) => (
+                <BenefitCard
+                  key={`grid-benefit-highlight-${index}-${benefit.title}`}
+                  title={benefit.title}
+                  description={benefit.description}
+                  variant={benefit.variant}
+                  image={benefit.image}
+                />
+              ))}
           </RightColumn>
         </CardsGrid>
 
         <ScrollWrapper>
-          <ScrollIndicator size={40} />
+          <ScrollIndicator size={40} targetSectionId="channels-section" />
         </ScrollWrapper>
       </PageContainer>
-    </BenefitsSectionContainer>
+    </BenefitsSectionContainer >
   )
 }
 
 export default BenefitsSection
-

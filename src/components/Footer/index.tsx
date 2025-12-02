@@ -29,7 +29,9 @@ import {
 } from './styles'
 
 const Footer: React.FC = () => {
-  return (
+  const currentYear = new Date().getFullYear()
+
+  return ( 
     <FooterContainer>
       <FooterContent>
         <FooterColumn>
@@ -76,7 +78,7 @@ const Footer: React.FC = () => {
       </FooterContent>
 
       <FooterBottom>
-        <Copyright>© 2023. Todos direitos reservados à Webhelp</Copyright>
+        <Copyright>© {currentYear}. Todos direitos reservados à Webhelp</Copyright>
         <BottomRight>
           <PlatformContainer>
             <ToggleSwitch />
@@ -99,4 +101,3 @@ const Footer: React.FC = () => {
 }
 
 export default Footer
-

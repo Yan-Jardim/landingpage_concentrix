@@ -32,13 +32,13 @@ Landing page moderna e responsiva desenvolvida para uma plataforma de gestão de
 
 ### Instalação das dependências
 
-bash
+sh
 npm install
 
 
 ### Executar em modo de desenvolvimento
 
-bash
+sh
 npm run dev
 
 
@@ -46,19 +46,19 @@ O projeto estará disponível em http://localhost:5173 (ou outra porta disponív
 
 ### Build para produção
 
-bash
+sh
 npm run build
 
 
 ### Preview do build de produção
 
-bash
+sh
 npm run preview
 
 
 ### Linting
 
-bash
+sh
 npm run lint
 
 
@@ -154,34 +154,73 @@ Tema centralizado com tokens do Design System:
 - *Sombras*: Sistema de elevação
 - *Border Radius*: Valores padronizados (none, small, medium, large, xlarge, pill, circle)
 
-## 📁 Estrutura do Projeto
+## 📁 Arquitetura e Estrutura do Projeto
+
+### Organização de Componentes
+
+O projeto segue uma arquitetura modular baseada em componentes, onde cada componente possui sua própria pasta com:
+
+- *index.tsx*: Componente principal com a lógica de renderização
+- *styles.ts*: Estilos específicos do componente usando styled-components
+- *types.ts*: Definições de tipos TypeScript (quando aplicável)
+
+### Estrutura de Diretórios
 
 
 landingpage/
 ├── src/
 │   ├── assets/                    # Recursos estáticos
-│   │   ├── images/                # Imagens principais
-│   │   └── Icon_footer/           # Ícones do footer
-│   ├── components/                # Componentes React
-│   │   ├── [ComponentName]/       # Estrutura por componente
-│   │   │   ├── index.tsx          # Componente principal
-│   │   │   └── styles.ts          # Estilos styled-components
-│   ├── styles/                     # Estilos globais
-│   │   ├── global.ts              # Reset CSS e estilos globais
-│   │   └── theme.ts               # Tema e tokens do design system
-│   ├── utils/                      # Utilitários
-│   │   └── masks.ts               # Funções de máscara e validação
+│   │   ├── images/                # Imagens principais (Banner, Logo, etc.)
+│   │   └── Icon_footer/           # Ícones do rodapé
+│   │
+│   ├── components/                # Componentes React organizados por funcionalidade
+│   │   ├── BenefitCard/          # Card de benefício
+│   │   │   ├── index.tsx         # Componente
+│   │   │   ├── styles.ts         # Estilos
+│   │   │   └── types.ts          # Tipos TypeScript
+│   │   ├── BenefitsSection/       # Seção de benefícios
+│   │   ├── ChannelCard/          # Card de canal
+│   │   ├── ChannelsSection/      # Seção de canais
+│   │   ├── FaqItem/              # Item do FAQ
+│   │   ├── FaqSection/           # Seção FAQ
+│   │   ├── Footer/               # Rodapé
+│   │   ├── Header/               # Cabeçalho
+│   │   ├── HeroSection/          # Seção hero
+│   │   ├── LoginForm/            # Formulário de login
+│   │   ├── PageContainer/        # Container de página
+│   │   ├── ScrollIndicator/      # Indicador de scroll
+│   │   ├── StepCard/            # Card de passo
+│   │   └── StepsSection/         # Seção de passos
+│   │
+│   ├── styles/                    # Estilos globais e tema
+│   │   ├── global.ts             # Reset CSS e estilos globais
+│   │   └── theme.ts              # Tokens do design system
+│   │
+│   ├── utils/                     # Funções utilitárias
+│   │   └── masks.ts              # Máscaras e validações (CPF, CNPJ, Data)
+│   │
 │   ├── validation/                 # Schemas de validação
-│   │   └── loginSchema.ts         # Schema Zod para login
-│   ├── App.tsx                     # Componente raiz
-│   ├── main.tsx                    # Entry point
-│   └── styled.d.ts                 # Tipagem do styled-components
-├── public/                          # Arquivos públicos
-├── package.json                     # Dependências e scripts
-├── tsconfig.json                    # Configuração TypeScript
-├── vite.config.ts                   # Configuração Vite
-└── README.md                        # Documentação
+│   │   └── loginSchema.ts       # Schema Zod para formulário de login
+│   │
+│   ├── App.tsx                    # Componente raiz da aplicação
+│   ├── main.tsx                   # Entry point (ReactDOM.render)
+│   └── styled.d.ts               # Declarações de tipos para styled-components
+│
+├── public/                         # Arquivos estáticos públicos
+├── index.html                      # HTML principal
+├── package.json                    # Dependências e scripts npm
+├── tsconfig.json                   # Configuração TypeScript
+├── vite.config.ts                  # Configuração do Vite
+└── README.md                       # Documentação do projeto
 
+
+### Princípios de Arquitetura
+
+1. *Separação de Responsabilidades*: Cada componente tem uma responsabilidade única e bem definida
+2. *Reutilização*: Componentes genéricos (Card, Button, Input) são reutilizáveis em diferentes contextos
+3. *Tipagem Forte*: TypeScript com tipos separados em arquivos types.ts para melhor organização
+4. *Estilização Isolada*: Cada componente gerencia seus próprios estilos via styled-components
+5. *Design System Centralizado*: Tokens de design (cores, espaçamentos, tipografia) centralizados em theme.ts
 
 ## 🎯 Seções da Landing Page
 

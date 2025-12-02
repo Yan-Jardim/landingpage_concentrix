@@ -6,7 +6,7 @@ import {
   CardTitle,
   CardDescription,
 } from './styles'
-import {BenefitCardProps} from './types'
+import { BenefitCardProps } from './types'
 
 const BenefitCard: React.FC<BenefitCardProps> = ({
   title,
@@ -15,40 +15,22 @@ const BenefitCard: React.FC<BenefitCardProps> = ({
   icon,
   image,
 }) => {
+  const isHighlight = variant === 'highlight'
+
+  const renderedIcon = image ? (
+    <IconImage src={image} alt={title} />
+  ) : (
+    icon ?? ''
+  )
+
   return (
     <CardContainer variant={variant}>
-      {variant === 'highlight' ? (
-        <>
-          <CardTitle variant={variant}>{title}</CardTitle>
-          <CardDescription variant={variant}>{description}</CardDescription>
-          <IconWrapper variant={variant}>
-            {image ? (
-              <IconImage src={image} alt={title} />
-            ) : icon ? (
-              icon
-            ) : (
-              '💼'
-            )}
-          </IconWrapper>
-        </>
-      ) : (
-        <>
-          <CardTitle variant={variant}>{title}</CardTitle>
-          <IconWrapper variant={variant}>
-            {image ? (
-              <IconImage src={image} alt={title} />
-            ) : icon ? (
-              icon
-            ) : (
-              '💼'
-            )}
-          </IconWrapper>
-          <CardDescription variant={variant}>{description}</CardDescription>
-        </>
-      )}
+      <CardTitle variant={variant}>{title}</CardTitle>
+      {isHighlight && <CardDescription variant={variant}>{description}</CardDescription>}
+      <IconWrapper variant={variant}>{renderedIcon}</IconWrapper>
+      {!isHighlight && <CardDescription variant={variant}>{description}</CardDescription>}
     </CardContainer>
   )
 }
 
 export default BenefitCard
-
